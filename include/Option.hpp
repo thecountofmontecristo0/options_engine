@@ -17,7 +17,7 @@ private:
   OptionType optionType;
 
 public:
-  Option(double spot, double strike, double iv, double time, double rate,
+  Option(double spot, double strike, double time, double iv, double rate,
          OptionType type);
 
   double getSpotPrice() const;

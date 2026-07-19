@@ -1,6 +1,10 @@
+#include "../include/blackScholes.hpp"
 #include <iostream>
+
 using namespace std;
 int main() {
-  cout << "Options Pricing Engine\n";
-  return 0;
+
+  Option call(100, 100, 1.0, 0.20, 0.05, OptionType::Call);
+
+  std::cout << BlackScholes::price(call) << '\n';
 }
