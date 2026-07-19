@@ -1,0 +1,11 @@
+# Executables
+test1
+main
+app
+bs
+
+# Build directory
+build/
+
+# Object files
+*.o
