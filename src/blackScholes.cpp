@@ -5,6 +5,9 @@ double BlackScholes::normalCDF(double x) {
   return 0.5 * (1.0 + erf(x / sqrt(2.0)));
 }
 
+double BlackScholes::normalPDF(double x) {
+  return std::exp(-0.5 * x * x) / std::sqrt(2.0 * M_PI);
+}
 double BlackScholes::calcD1(const Option &option) {
   double S = option.getSpotPrice();
   double K = option.getStrikePrice();
