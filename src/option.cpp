@@ -1,4 +1,4 @@
-#include "../include/Option.hpp"
+#include "../include/option.hpp"
 #include <stdexcept>
 Option::Option(double spot, double strike, double time, double iv, double rate,
                OptionType type) {
