@@ -17,3 +17,11 @@ double Greeks::gamma(const Option &option) {
 
   return BlackScholes::normalPDF(d1) / (vol * s * std::sqrt(t));
 }
+
+double Greeks::vega(const Option &option) {
+  double s = option.getSpotPrice();
+  double d1 = BlackScholes::calcD1(option);
+  double t = option.getTimeToExpiry();
+
+  return s * BlackScholes::normalPDF(d1) * std::sqrt(t);
+}
