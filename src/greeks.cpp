@@ -41,3 +41,14 @@ double Greeks::theta(const Option &option) {
   }
   return common_term + r * k * std::exp(-r * t) * BlackScholes::normalCDF(-d2);
 }
+
+double Greeks::rho(const Option &option) {
+  double d2 = BlackScholes::calcD2(option);
+  double t = option.getTimeToExpiry();
+  double r = option.getRiskFreeRate();
+  double k = option.getStrikePrice();
+
+  if (option.getOptionType() == OptionType::Put)
+    return -(k * t * std::exp(-r * t) * BlackScholes::normalCDF(-d2));
+  return k * t * std::exp(-r * t) * BlackScholes::normalCDF(d2);
+}
