@@ -7,6 +7,6 @@ int main() {
   Option call(100, 100, 1.0, 0.20, 0.05, OptionType::Call);
   Option put(100, 100, 1.0, 0.20, 0.05, OptionType::Put);
 
-  std::cout << Greeks::vega(call) << '\n';
-  std::cout << Greeks::vega(put) << '\n';
+  std::cout << Greeks::theta(call) << '\n';
+  std::cout << Greeks::theta(put) << '\n';
 }

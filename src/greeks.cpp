@@ -25,3 +25,19 @@ double Greeks::vega(const Option &option) {
 
   return s * BlackScholes::normalPDF(d1) * std::sqrt(t);
 }
+
+double Greeks::theta(const Option &option) {
+  double s = option.getSpotPrice();
+  double r = option.getRiskFreeRate();
+  double d1 = BlackScholes::calcD1(option);
+  double d2 = BlackScholes::calcD2(option);
+  double t = option.getTimeToExpiry();
+  double k = option.getStrikePrice();
+  double vol = option.getIv();
+  double common_term =
+      -(s * vol * BlackScholes::normalPDF(d1)) / (2 * std::sqrt(t));
+  if (option.getOptionType() == OptionType::Call) {
+    return common_term - r * k * std::exp(-r * t) * BlackScholes::normalCDF(d2);
+  }
+  return common_term + r * k * std::exp(-r * t) * BlackScholes::normalCDF(-d2);
+}
